@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'lucida grande', helvetica, arial, sans-serif;
+}
+
+/* for floats */
+.cf:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+html[xmlns] .cf {
+  display: block;
+}
+
+* html .cf {
+  height: 1%;
+}
+
+
+header {
+    display: block;
+    background-color: #ddd;
+    color: #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    border-bottom: 2px solid rgba(15, 38, 61, 0.5);
+    -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    opacity: .8;
+    text-align: center;
+}
+
+header h1 {
+    font: 3em/50px "Butcherman Caps", cursive;
+    margin: 10px 0 0 0;
+    color: #222;
+}
+
+#content {
+    color: #fff;
+    padding: 60px 0 60px 0;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    font-family: 'Convergence', sans-serif;
+}
+
+#content > div {
+    width: 800px;
+    margin: auto;
+}
+
+#content div.intro {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#content div.cast {
+    width: 600px;
+}
+
+#content div.mailing_list {
+    float: right;
+    width: 200px;
+}
+
+#content .person {
+    font-size: .8em;
+    margin: 1em 6em 1em 6em;
+    min-height: 110px;
+}
+
+#content .person:nth-child(2n+1) .picture {
+    float: left;
+    margin-right: 1em;
+}
+
+#content .person:nth-child(2n) .picture {
+    float: right;
+    margin-left: 1em;
+}
+
+footer {
+    display: block;
+    background-color: #9d9d9d;
+    color: #313131;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    opacity: .8;
+}
+
+footer a {
+    color: #000;
+}
+
+footer a:hover {
+    opacity: .5;
+}
+
+footer > div {
+    width: 600px;
+    margin: auto;
+    margin-top: 10px;
+    font-size: .8em;
+    text-align: center;
+    font-weight: 20;0
+}
+
+footer > div img {
+    margin-bottom: -.5em;
+}
+
+footer > div small {
+    display: block;
+    font-size: .8em;
+    opacity: .8;
+    margin-top: 1.5em;
+}
