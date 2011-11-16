@@ -75,6 +75,16 @@ header h1 {
 #content div.mailing_list {
     float: right;
     width: 200px;
+    font-size: .8em;
+    text-align: center;
+}
+
+#content div.mailing_list input {
+    border: 1px solid black;
+    background-color: #666;
+    padding: .2em .4em .2em .4em;
+    margin: .7em;
+    color: #ddd;
 }
 
 #content .person {
