@@ -79,9 +79,28 @@ header h1 {
     text-align: center;
 }
 
-#content div.mailing_list div.next_step,
-#content div.mailing_list div.waiting {
+#content div.mailing_list > div {
     display: none;
+}
+
+#content .mailing_list > .sad_failure {
+    margin: .5em;
+    padding: 1em;
+    font-size: .9em;
+    background: #666;
+    border: 1px solid black;
+}
+
+#content .mailing_list > .done {
+    margin: 1em 0 1em 0;
+}
+
+#content div.great_success {
+    font-size: 1.1em;
+}
+
+#content div.done .email {
+    font-weight: bold;
 }
 
 #content div.mailing_list a {
