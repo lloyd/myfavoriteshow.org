@@ -79,6 +79,21 @@ header h1 {
     text-align: center;
 }
 
+#content div.mailing_list div.next_step,
+#content div.mailing_list div.waiting {
+    display: none;
+}
+
+#content div.mailing_list a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed white;
+}
+
+#content div.mailing_list a:hover {
+    opacity: .8;
+}
+
 #content div.mailing_list input {
     border: 1px solid black;
     background-color: #666;
