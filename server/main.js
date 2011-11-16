@@ -61,7 +61,6 @@ function determineBrowserIDURL(req) {
 // a substitution middleware allows us to easily point at different browserid servers
 app.use(postprocess.middleware(function(req, body) {
   var browseridURL = determineBrowserIDURL(req);
-  console.log("sub in:", browseridURL);
   return body.toString().replace(new RegExp("https://browserid.org", 'g'), browseridURL);
 }));
 
