@@ -14,6 +14,7 @@ function setupForm() {
   $(".mailing_list *").unbind();
   $(".mailing_list > button").show();
   $(".mailing_list > div").hide();
+  $('.mailing_list input').removeAttr("disabled");
 
   $(".mailing_list > button").click(function() {
     $('.mailing_list input').attr("disabled", true);
@@ -23,6 +24,7 @@ function setupForm() {
           $('.mailing_list .next_step').hide();
           $('.mailing_list .waiting').show();
           navigator.id.get(function(assertion) {
+            if (!assertion) return failedToComplete();
             $.ajax({
               type: 'POST',
               url: '/api/register',
