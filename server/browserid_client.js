@@ -13,9 +13,9 @@ exports.verify = function (obj, cb) {
 
   var host = urlparse(obj.verifier_url).validate().originOnly();
   var meth = (host.scheme === 'https' ? https : http);
-
+  
   var vreq = meth.request({
-    host: host.hostname,
+    host: host.host,
     port: (host.port ? host.port : (host.scheme === 'https' ? 443 : 80)),
     path: "/verify",
     method: 'POST'
