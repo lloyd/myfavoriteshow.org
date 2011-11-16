@@ -1,68 +1,50 @@
-## MyFavoriteBeer.org - A BrowserID example site
+## MyFavoriteShow.org - A BrowserID example site
 
 This is a simple site that demonstrates how
-[BrowserID](https://browserid.org) can be used to build a better login
-experience for users.
+[BrowserID](https://browserid.org) can be used to to accept verified
+emails from users for the purposes of signup to email lists or fan
+lists.
 
 ## Overview
 
 BrowserID is a distributed system that allows users to use their email
-address as login name and password.  The cryptography which allows users
-to prove that they own an email address without site specific passwords
-is described in depth in the [how browserid works][] blog post.  For
-website owners, there is a [three step tutorial][] that helps you integrate
-browserid as fast as possible.
+address as login name and password.  Go read more about
+[how browserid works] if you like.
 
   [how browserid works]: http://lloyd.io/how-browserid-works
-  [three step tutorial]: https://github.com/mozilla/browserid/wiki/How-to-Use-BrowserID-on-Your-Site
 
-This repository goes into greater depth than the tutorial, and
-provides a full working example of a small but complete website that
-uses BrowserID for authentication.  This code is running at
-[myfavoritebeer.org](http://myfavoritebeer.org).
+This repository contains a sample that explores more fully a single
+use case of browserid, namely using it as a means to allow users to
+share verified email addresses with a site, so that sites easily implement
+a "join our mailing list" feature in a robust manner - letting BrowserID
+handle the problem of verifying that users actually own the email address
+that they enter.
 
 ## The Implementation
 
-MyFavoriteBeer is a simple site that allows a user to log in and store a single string
-of information, their favorite beer.  The site consists of a static HTML frontend
-(code under `static/`), and
-a simple web services API implemented by a node.js server (code under `server/`).
+MyFavoriteShow.org is a site dedicated to a fictional TV show
+"The Great Identity Race".  Fans of the show can come to this site,
+read a bunch about it, and their favorite stars of the show.
+Additionally, users can choose to register or unregister for the show's
+email list.  Registration leverages browserid to confirm that users
+only register email addresses that they actually own.
+
 
 ### The API
 
 The web services api exported by the node.js server consists of the following:
 
-  * **`/api/whoami`** - reports whether the current session is authenticated
-  * **`/api/login`** - accepts a browserid assertion to allow the user to authenticate
-  * **`/api/get`** - returns the current user's favorite beer
-  * **`/api/set`** - sets the current user's favorite beer
-  * **`/api/logout`** - clears the current session
+  * **`/api/register`** - registers an email address to the show's mailing list. 
+  * **`/api/unregiser`** - unregisters an email address from the show's mailing list.
 
 Further documentation of these calls is available in the source code. 
 
-### Authentication
-
-The most interesting part of this example is how authentication occurs.  Client code
-includes the browserid javascript include file, and upon a user clicking the *sign-in*
-button, `navigator.id.getVerifiedEmail()` is invoked.  BrowserID returns a string 
-which contains an *assertion*.  This assertion is passed up to the myfavoritebeer server
-via the `/api/login` api.  The server *verifies* this assertion using the free 
-verifier service by `POST`ing to `https://browserid.org/verify`.  Finally, upon successful
-verification, the server sets a cookie which represents an authenticated session.
-
-### Sessions
-
-For simplicities' sake, "sessions" in this example are implemented using a
-[third party library](https://github.com/jpallen/connect-cookie-session) which encrypts
-session data using a private key and stores this data in a cookie on the user's browser.
-This approach makes it so the server doesn't need to store any data to implement sessions
-and keeps the example simple.
-
 ### Persistence
 
-We have to store the beer preferences *somewhere*.  mongodb is used for this purpose and
-a very simple database abstraction layer exists in `db.js`.  The details of interacting
-with the database aren't important, but if you're curious have a look in db.js.
+We have to store the email list *somewhere*.  mongodb is used
+for this purpose and a very simple database abstraction layer exists
+in `db.js`.  The details of interacting with the database aren't
+important, but if you're curious have a look in db.js.
 
 ### Run it!
 
@@ -76,16 +58,18 @@ To run the example code locally:
 On stdout you'll see an ip address and port, like `127.0.0.1:59275`.  Open that
 up in your web browser.
 
-**NOTE:** You'll see warnings about how no database is configured.  Don't worry about
-it.  The code is designed to run with or without a configured database so that it's 
-easier to play with.  The only downside of running without a database is that your
-server won't remember anything.  Oh well.
+**NOTE:** You'll see warnings about how no database is configured.
+Don't worry about it.  The code is designed to run with or without a
+configured database so that it's easier to play with.  The only
+downside of running without a database is that your server won't
+remember anything.  Oh well.
 
 ### Deployment
 
-The code is designed to run on heroku's node.js hosting services, and the only way 
-this affects the implementation is via environment variable naming choices and 
-the presence of a `Procfile` which tells heroku how to start the server.
+The code is designed to run on heroku's node.js hosting services, and
+the only way this affects the implementation is via environment
+variable naming choices and the presence of a `Procfile` which tells
+heroku how to start the server.
 
 If you'd like to deploy this service to heroku yourself, all you'd have to do is:
 
@@ -101,4 +85,3 @@ should run under the hosting environment of your preference.
 ## Credit
 
 Concept + Design(kinda): https://myfavouritesandwich.org/
-Art:                     http://www.flickr.com/photos/bitzi/236037776/
