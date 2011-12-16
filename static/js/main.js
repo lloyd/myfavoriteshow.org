@@ -17,6 +17,17 @@ function setupForm() {
   $('.mailing_list input').removeAttr("disabled");
 
   $(".mailing_list > button").click(function() {
+    var email = $.trim($('.mailing_list input').val());
+
+    if(!email) {
+      alert("the email field is required!");
+      return;
+    }
+    else if(!/^[\w.!#$%&'*+\-/=?\^`{|}~]+@[a-z\d-]+(\.[a-z\d-]+)+$/i.test(email)) {
+      alert("That is not a valid email address!");
+      return;
+    }
+
     $('.mailing_list input').attr("disabled", true);
     $('.mailing_list > button').fadeOut(200, function() {
       $('.mailing_list .next_step').fadeIn(500, function() {
@@ -41,7 +52,7 @@ function setupForm() {
               }
             });
           }, {
-            requiredEmail: $.trim($('.mailing_list input').val())
+            requiredEmail: email
           });
         });
       });
