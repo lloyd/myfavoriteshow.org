@@ -1,8 +1,8 @@
 body {
-    background-color: #333;
     margin: 0;
     padding: 0;
     font-family: 'lucida grande', helvetica, arial, sans-serif;
+    background: #333;
 }
 
 /* for floats */
@@ -33,11 +33,13 @@ header {
     left: 0;
     height: 60px;
     width: 100%;
+    border-bottom: 2px solid rgb(15, 38, 61);
     border-bottom: 2px solid rgba(15, 38, 61, 0.5);
     -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
     z-index: 10;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: .8;
     text-align: center;
 }
@@ -67,6 +69,12 @@ header h1 {
     margin-top: 2em;
     margin-bottom: 2em;
 }
+
+#content .intro > strong {
+    font-weight: normal;
+    text-decoration: blink;
+}
+
 
 #content div.cast {
     width: 600px;
@@ -110,6 +118,7 @@ header h1 {
 }
 
 #content div.mailing_list a:hover {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: .8;
 }
 
@@ -146,6 +155,7 @@ footer {
     left: 0;
     right: 0;
     height: 75px;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: .8;
 }
 
@@ -154,6 +164,7 @@ footer a {
 }
 
 footer a:hover {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     opacity: .5;
 }
 
@@ -167,12 +178,14 @@ footer > div {
 }
 
 footer > div img {
+    border: none;
     margin-bottom: -.5em;
 }
 
 footer > div small {
     display: block;
     font-size: .8em;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     opacity: .8;
     margin-top: 1.5em;
 }
