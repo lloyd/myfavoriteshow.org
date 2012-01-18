@@ -59,13 +59,19 @@ function setupForm() {
     });
   });
 
-  // register a click handler for our button
-  $('.mailing_list input').keypress(function() {
+  function emailEntered() {
     $('.mailing_list > button').removeAttr("disabled");
     $('.mailing_list input').unbind();
-  });
+  }
+
+  // If there is a value in the input box on startup, enable the button.
+  if($('.mailing_list input').val()) {
+    emailEntered();
+  }
+
+  // register a click handler for our button
+  $('.mailing_list input').keyup(emailEntered);
+
 }
 
-$(document).ready(function() {
-  setupForm();
-});
+$(setupForm);
