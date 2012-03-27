@@ -84,4 +84,4 @@ should run under the hosting environment of your preference.
 
 ## Credit
 
-Concept + Design(kinda): https://myfavouritesandwich.org/
+Concept + Design(kinda): http://myfavouritesandwich.org/
